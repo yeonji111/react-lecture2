@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 const HookUseState = () => {
-  /*  */
-
   /*  useState
         - 상태(state)가 변경되는걸 감지
         (상태값 변경할 수 있게 도와주는 훅) 
