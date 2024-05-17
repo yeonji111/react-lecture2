@@ -1,65 +1,56 @@
 import { useEffect, useState } from "react";
-import "../css/mission.css";
-import { type } from "@testing-library/user-event/dist/type";
+
 const HookUseEffect = () => {
-  const [mode, setMode] = useState(["USER MODE", "ADMIN MODE"]);
+  const list = [
+    { type: "admin", menu: "관리자메뉴1" },
+    { type: "user", menu: "사용자메뉴1" },
+    { type: "admin", menu: "관리자메뉴2" },
+    { type: "user", menu: "사용자메뉴2" },
+    { type: "admin", menu: "관리자메뉴3" },
+  ];
 
-  /* 내 풀이 : 배열에 있는 값과 직접 비교 */
-  const [menu, setMenu] = useState([]);
-  const userArr = ["개인정보관리화면", "알림설정화면"];
-  const adminArr = ["회원전체관리화면", "배너관리화면", "회사정보관리화면"];
+  const [usermode, setUsermode] = useState(null); //모드(true: 사용자, false: 관리자)
+  const [menuList, setMenuList] = useState([]); //메뉴리스트
+  const [adminMenuList, setAdminMenuList] = useState([]);
+  const [userMenuList, setUserMenuList] = useState([]);
 
+  /* 메뉴 타입별 분리 */
   useEffect(() => {
-    setMode(mode[0]);
-    // 사용자 관련 메뉴
-    setMenu(userArr);
+    getMenu();
+    setUsermode(true);
   }, []);
 
-  const ChangeMode = () => {
-    if (mode == "USER MODE") {
-      setMode("ADMIN MODE");
-      // 관리자 관련 메뉴
-      setMenu(adminArr);
-    } else if (mode == "ADMIN MODE") {
-      setMode("USER MODE");
-      // 사용자 관련 메뉴
-      setMenu(userArr);
-    }
+  /* 메뉴 타입별 분리 */
+  const getMenu = () => {
+    const list1 = list.filter((item) => {
+      return item.type == "admin";
+    });
+    setAdminMenuList(list1);
+
+    const list2 = list.filter((item) => {
+      return item.type == "user";
+    });
+    setUserMenuList(list2);
   };
 
-  return (
-    <>
-      <div className="center">
-        <button className="fancy" onClick={ChangeMode}>
-          <span className="top-key"></span>
-          <a>{mode}</a>
-          <span className="bottom-key-1"></span>
-          <span className="bottom-key-2"></span>
-        </button>
-      </div>
+  /* 모드 변환 */
+  const goChangemode = () => {
+    setUsermode(!usermode);
+  };
 
-      <ul className="shadow-button-set">
-        {/* title에 따라 메뉴를 다르게 출력하기
-         title에 따라 map 돌리기 */}
-        {menu.map((v, i) => {
-          return (
-            <li key={i}>
-              <button>{v}</button>
-            </li>
-          );
-        })}
-      </ul>
-      <footer className="copy">
-        <p>
-          <a
-            href="https://waterproof-web-wizard.com/"
-            title="Online Marketing Agentur"
-          >
-            Waterproof Web Wizzard
-          </a>
-        </p>
-      </footer>
-    </>
+  /* 모드 변환에 따른 메뉴 변환 */
+  useEffect(() => {
+    setMenuList(usermode ? userMenuList : adminMenuList);
+  }, [usermode]);
+
+  return (
+    <div>
+      <button onClick={goChangemode}>{usermode ? "user" : "admin"} mode</button>
+
+      {menuList.map((v, i) => {
+        return <p key={i}>{v.menu}</p>;
+      })}
+    </div>
   );
 };
 export default HookUseEffect;

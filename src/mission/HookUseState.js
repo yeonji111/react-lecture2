@@ -2,28 +2,22 @@ import { useState } from "react";
 import "../css/mission.css";
 
 const HookUseState = () => {
-  /* 할일 제목, 내용 입력받기
-     입력받은 제목, 내용을 목록형태로 출력
-  */
+  const [title, setTitle] = useState(""); //제목
+  const [contents, setContents] = useState(""); //내용
+  const [todoList, setTodoList] = useState([]); //할일목록
 
-  /* 변수들 */
-  const [title, setTitle] = useState(""); // 제목
-  const [contents, setContents] = useState(""); // 내용
-  const [todoList, setTodoList] = useState([]); // 할일목록
-
-  /* 입력 요소 핸들러 */
+  /* 입력요소 핸들러 */
   const titleOnChangeHandler = (e) => {
     setTitle(e.target.value);
   };
-
-  const contentOnChangeHandler = (e) => {
+  const contentsOnChangeHandler = (e) => {
     setContents(e.target.value);
   };
 
-  /* 할일저장 */
+  /* 할일 저장 */
   const goAddTodo = () => {
     if (title == "" || contents == "") {
-      alert("제목과 내용 모두 입력해주세요");
+      alert("제목과 내용을 모두 입력해주세요.");
       return;
     }
     setTodoList([...todoList, { title: title, contents: contents }]);
@@ -36,27 +30,28 @@ const HookUseState = () => {
       <div className="todo-body">
         <input
           type="text"
-          className="todo-input0"
-          placeholder="할일제목"
+          className="todo-input"
+          placeholder="제목입력"
           onChange={titleOnChangeHandler}
           value={title}
-        ></input>
+        />
         <input
           type="text"
           className="todo-input"
-          placeholder="할일내용"
-          onChange={contentOnChangeHandler}
+          placeholder="내용입력"
+          onChange={contentsOnChangeHandler}
           value={contents}
-        ></input>
-        <button onClick={goAddTodo}>할일추가</button>
+        />
+        <button className="btn--primary" onClick={goAddTodo}>
+          ADD
+        </button>
         <strong>Best First-Person Shooters</strong>
-
         <ol className="alternating-colors todo-ol">
           {todoList.map((v, i) => {
             return (
               <li key={i}>
                 <strong>{v.title}</strong>
-                <p>{v.content}</p>
+                <p>{v.contents}</p>
               </li>
             );
           })}

@@ -47,6 +47,8 @@ strong { color: #292929; }
   li:nth-child(even):before { border-color: #2378D5; }
 } */
 
+
+
 .center{
   display: flex;
 align-items: center;
@@ -230,3 +232,4 @@ p{
 html {
   block-size: 100%;
 }
+

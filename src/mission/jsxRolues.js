@@ -14,13 +14,17 @@ const JsxRolues = () => {
     { fruit: "오렌지", price: 5000 },
   ];
 
+  //1. 모든 QnA 목록 출력
+  //2. Q4 제외한 QnA 목록
+  //3. 과일의 이름: 가격 + 이미지 모두 출력
   return (
     <>
-      <h2 style={{ backgroundColor: "pink" }}> 모든 QnA목록</h2>
-      <ul type="none">
+      <h2 style={{ backgroundColor: "pink" }}>모든 qna 목록</h2>
+      <ul type="none" style={{ paddingLeft: "10px" }}>
+        {/* <태그>{객체 자체를 집어넣으면 오류남}</태그> */}
         {qnaList.map((v, i) => {
           return (
-            <li key={`QnA-${i}`}>
+            <li key={i}>
               {v.question}
               <br />
               {v.answer}
@@ -29,45 +33,28 @@ const JsxRolues = () => {
         })}
       </ul>
 
-      <h2 style={{ backgroundColor: "pink" }}> Q4를 제외한 QnA 목록 출력</h2>
+      <h2>Q4 질문 제외 목록</h2>
       <ul type="none">
-        {/* 질문이 강아지인 경우 제외 */}
-        {/* {qnaList.map((v, i) => {
-          return v.question != "Q4. 강아지는?" ? (
-            <li key={`qna-${i}`}>
-              {v.question}
-              <br />
-              {v.answer}
-            </li>
-          ) : null;
-        }
-        )} */}
-
-        {/* 인덱스가 3인 경우를 제외 */}
         {qnaList.map((v, i) => {
           return i != 3 ? (
-            <li key={`qna-${i}`}>
+            <li>
               {v.question}
               <br />
               {v.answer}
             </li>
           ) : null;
         })}
-
-        {/* 질문에 Q4가 포함되어있을 경우 제외 */}
       </ul>
 
-      <h2 style={{ backgroundColor: "pink" }}> 과일 목록 </h2>
+      <h2>이미지 같이 출력</h2>
       <ul type="none">
         {fruits.map((v, i) => {
           return (
-            <li key={`fr${i}`}>
-              <img
-                src={`/images/fr${i + 1}.jpg`}
-                style={{ width: "300px", height: "300px" }}
-              />
-              <br />
-              {v.fruit}의 가격 : {v.price}
+            <li key={i}>
+              <img src={`/images/fr${i + 1}.jpg`} style={{ width: "100px" }} />
+              <p>
+                {v.fruit}의 가격: {v.price}원
+              </p>
             </li>
           );
         })}
