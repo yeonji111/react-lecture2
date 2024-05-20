@@ -10,6 +10,7 @@ import HookUseRef_m from "./mission/HookUseRef";
 import HookUseCallback from "./lecture/HookUseCallback";
 import HookUseCallback_m from "./mission/HookUseCallback copy";
 import PropSend from "./lecture/PropsSend";
+import PropSend_m from "./mission/PropsSend";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
       {/* <HookUseState_m /> */}
       {/* <HookUseEffect_m /> */}
       {/* <HookUseRef_m /> */}
-      <HookUseCallback_m />
+      {/* <HookUseCallback_m /> */}
+      <PropSend_m />
     </div>
   );
 }

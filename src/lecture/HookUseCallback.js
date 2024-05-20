@@ -59,7 +59,6 @@ const HookUseCallback = () => {
     console.log("textOnChangeHandler");
   }, [textOnChangeHandler]);
 
-  /*  */
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const nameOnChangeHandler = useCallback((e) => {
