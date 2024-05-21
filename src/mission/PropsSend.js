@@ -2,6 +2,15 @@ import { useState } from "react";
 import Login from "./Login";
 
 const PropsSend = () => {
+  /* 부모에서 자식으로 값이 전달
+     만약 자식에서 부모로 값을 전달할 경우에는 함수호출만 가능
+     (부모에서 함수를 던져줘야함)
+
+     단, 함수를 던질때 절대로 set함수 던지지않기
+     왜? 자식이 부모의 값을 직접적으로 건드는것은 좋지 않음
+  */
+
+  /* 팝업 상태값 */
   const [open, setOpen] = useState(false);
 
   const openPopup = () => {
@@ -24,7 +33,7 @@ const PropsSend = () => {
   return (
     <>
       {open ? (
-        <Login onClose={close} google="구글" />
+        <Login onClose={close} type="구글" />
       ) : (
         <div className="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200">
           <div className="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
@@ -50,6 +59,7 @@ const PropsSend = () => {
                         className="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
  hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
                         onClick={openPopup}
+                        // onClick={()=>(setOpen(true))} ---> 선생님의 익명함수 버전
                       >
                         <div className="relative flex items-center space-x-4 justify-center">
                           <img

@@ -11,6 +11,8 @@ import HookUseCallback from "./lecture/HookUseCallback";
 import HookUseCallback_m from "./mission/HookUseCallback copy";
 import PropSend from "./lecture/PropsSend";
 import PropSend_m from "./mission/PropsSend";
+import Cleanup from "./lecture/Timer/Cleanup";
+import Signup from "./mission/Timer/Signup";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
       {/* <HookUseRef /> */}
       {/* <HookUseCallback /> */}
       {/* <PropSend /> */}
+      {/* <Cleanup /> */}
 
       {/* 미션컴포넌트 */}
       {/* <JsxRolues_m /> */}
@@ -29,7 +32,8 @@ function App() {
       {/* <HookUseEffect_m /> */}
       {/* <HookUseRef_m /> */}
       {/* <HookUseCallback_m /> */}
-      <PropSend_m />
+      {/* <PropSend_m /> */}
+      <Signup />
     </div>
   );
 }

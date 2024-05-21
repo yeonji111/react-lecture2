@@ -1,7 +1,8 @@
 import { useCallback, useState } from "react";
 
 const Login = (props) => {
-  const { onClose, google } = props;
+  const { onClose, type } = props;
+  // 할당하는 대신 const Login = ({onClose, type}) => {  } 으로 변경해도 가능
   const [userid, setUserId] = useState("");
   const [userpw, setUserPw] = useState("");
 
@@ -12,15 +13,19 @@ const Login = (props) => {
     setUserPw(e.target.value);
   }, []);
 
+  // 부모에 있는 값을 자식이 직접적으로 변화하게 하면 안됨(Setter 함수)
+
   const goSave = () => {
     //json.stringfy <-> json.parse
     const obj = JSON.parse(localStorage.getItem("login"));
     const { id, pw, name } = obj;
     if (!userid) {
       alert("아이디를 입력하세요");
+      return;
     }
     if (!userpw) {
       alert("비밀번호를 입력하세요");
+      return;
     }
 
     if (id == userid && pw == userpw) {
@@ -31,6 +36,8 @@ const Login = (props) => {
     }
   };
 
+  // if문(다양한 대상에 조건문을 걸 경우) - if elseif else(한 가지 대상에 조건문을 걸 경우)
+
   return (
     <>
       <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
@@ -39,7 +46,7 @@ const Login = (props) => {
           <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
             <div className="max-w-md mx-auto">
               <div>
-                <h1 className="text-2xl font-semibold">{google} 로그인</h1>
+                <h1 className="text-2xl font-semibold">{type} 로그인</h1>
               </div>
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
