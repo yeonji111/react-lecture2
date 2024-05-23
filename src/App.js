@@ -7,12 +7,14 @@ import HookUseEffect from "./lecture/HookUseEffect";
 import HookUseEffect_m from "./mission/HookUseEffect";
 import HookUseRef from "./lecture/HookUseRef";
 import HookUseRef_m from "./mission/HookUseRef";
-import HookUseCallback from "./lecture/HookUseCallback";
-import HookUseCallback_m from "./mission/HookUseCallback copy";
-import PropSend from "./lecture/PropsSend";
-import PropSend_m from "./mission/PropsSend";
+// import HookUseCallback from "./lecture/HookUseCallback";
+// import HookUseCallback_m from "./mission/HookUseCallback";
+import PropsSend from "./lecture/PropsSend";
+import PropsSend_m from "./mission/PropsSend";
 import Cleanup from "./lecture/Timer/Cleanup";
 import Signup from "./mission/Timer/Signup";
+import Schedule from "./lecture/Schedule/Schedule";
+import Schedule_m from "./mission/Schedule/Schedule";
 
 function App() {
   return (
@@ -23,8 +25,9 @@ function App() {
       {/* <HookUseEffect /> */}
       {/* <HookUseRef /> */}
       {/* <HookUseCallback /> */}
-      {/* <PropSend /> */}
+      {/* <PropsSend /> */}
       {/* <Cleanup /> */}
+      {/* <Schedule /> */}
 
       {/* 미션컴포넌트 */}
       {/* <JsxRolues_m /> */}
@@ -32,8 +35,9 @@ function App() {
       {/* <HookUseEffect_m /> */}
       {/* <HookUseRef_m /> */}
       {/* <HookUseCallback_m /> */}
-      {/* <PropSend_m /> */}
-      <Signup />
+      {/* <PropsSend_m /> */}
+      {/* <Signup /> */}
+      <Schedule_m />
     </div>
   );
 }
